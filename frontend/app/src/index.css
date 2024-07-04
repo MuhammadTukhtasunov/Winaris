@@ -1,14 +1,14 @@
 :root {
-  --cardtext: #73000a;
+  --cardtext: #006C9A;
   --bg: #D3D3D3;
-  --hover: #570008;
+  --hover: #003e59;
   --cardbg: #C7C7C7;
   --cardbghover: #A2A2A2;
-  --error: #e7195a;
+  --error: #008bc6;
   --nav-width: 300px;
   --navbg:  #A2A2A2;
-  --accent: #844247;
-  --bright-hover: #b00000;
+  --accent: #3c758e;
+  --bright-hover: #007db3;
 }
 
 /* Clear any browser inserted css */

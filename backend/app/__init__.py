@@ -2,9 +2,11 @@ from flask import Flask
 from config import Config
 from app.extensions import db, migrate, login_manager
 from app.dashboard_module import blueprint as dashboard_bp
+from app.home_module import blueprint as home_bp                                   # Winaris Home
 from app.login_module import blueprint as login_bp
 from app.research_info_module import blueprint as research_info_bp
 from app.student_evals_module import blueprint as student_evals_bp
+from app.shop_module import blueprint as shop_bp                                    # Winaris Shop
 from app.team_assessments_module import blueprint as team_assessments_bp
 from app.course_analytics_module import blueprint as course_analytics_bp
 from app.grant_upload_module import blueprint as grantupload_bp
@@ -32,12 +34,14 @@ def create_app(config_class=Config):
     db.init_app(app)
     login_manager.init_app(app)
     migrate.init_app(app, db)
-
+    
     # Register blueprints
     app.register_blueprint(dashboard_bp)
+    app.register_blueprint(home_bp)                                                 # Winaris Home
     app.register_blueprint(login_bp)
     app.register_blueprint(research_info_bp)
-    app.register_blueprint(student_evals_bp)
+    app.register_blueprint(student_evals_bp)                    
+    app.register_blueprint(shop_bp)                                                 # Winaris Shop                                                              
     app.register_blueprint(team_assessments_bp)
     app.register_blueprint(course_analytics_bp)
     app.register_blueprint(grantupload_bp)

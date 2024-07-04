@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { EVAL_UPLOAD_URL, EVAL_OVERWRITE_URL } from '../../config';
+import { EVAL_UPLOAD_URL, EVAL_OVERWRITE_URL, WINARIS_UPLOAD_URL } from '../../config';
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useStudentEvalsContext } from '../../hooks/useStudentEvalsContext';
 import { useCourseAnalyticsContext } from '../../hooks/useCourseAnalyticsContext';
@@ -7,9 +7,9 @@ import { useDashboardContext } from '../../hooks/useDashboardContext';
 import { useTeamAssessmentsContext } from '../../hooks/useTeamAssessmentsContext';
 import { useNavigate } from "react-router-dom";
 import ConfirmAlert from '../../components/ConfirmAlert/ConfirmAlert';
-import './evalupload.css';
+import './partsupload.css';
 
-function EvalUpload() {
+function PartsUpload() {
   
   const navigate = useNavigate()
 
@@ -79,11 +79,11 @@ function EvalUpload() {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('fileName', file.name);
-
+    
     try {
       setError(null)
       setEvalProcessing(true)
-      const response = await fetch(EVAL_UPLOAD_URL, {
+      const response = await fetch(WINARIS_UPLOAD_URL, {
         method: 'POST',
         credentials: 'include',
         body: formData,
@@ -208,12 +208,12 @@ function EvalUpload() {
       <ConfirmAlert 
         mssg={ confirmationMssg }
         setMssg={ setConfirmationMssg }
-        onConfirm={ confirmationFunc } 
+        onConfirm={ confirmationFunc }
         onCancel={ () => {} }
       />
       <div className="evalupload-container">
-        <h1 className="evaluploadPageHeader">Upload Student Evaluations Form</h1>
-        <section className="EvalUpload">
+        <h1 className="evaluploadPageHeader">Upload Parts File</h1>
+        <section className="PartsUpload">
           <form onSubmit={handleSubmit} className="evalupload-form">
             <h2 className="evalupload-form-heading">Upload CSV File</h2>
             <input type="file" onChange={handleChange} className="evalupload-form-input" />
@@ -328,4 +328,4 @@ function EvalUpload() {
   );
 }
 
-export default EvalUpload;
+export default PartsUpload;

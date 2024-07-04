@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { LOGOUT_URL } from '../../config';
 import { useNavigate } from "react-router-dom";
-import USCLogo from '../../assets/navbar-usc-logo.svg';
+// import USCLogo from '../../assets/navbar-usc-logo.svg';
+import USCLogo from '../../assets/winaris_logo.svg';
 import profile from '../../assets/profile.jpg';
 import { useStudentEvalsContext } from '../../hooks/useStudentEvalsContext';
+import { useShopContext } from '../../hooks/useShopContext';                                  // Winaris (shop page)  
 import { useCourseAnalyticsContext } from '../../hooks/useCourseAnalyticsContext';
 import { useDashboardContext } from '../../hooks/useDashboardContext';
+import { useHomeContext } from '../../hooks/useHomeContext';                                  // Winaris (home page)
 import { useTeamAssessmentsContext } from '../../hooks/useTeamAssessmentsContext';
 import { useResearchInfoContext } from '../../hooks/useResearchInfoContext';
 import { GET_PROFILE_PICTURE_URL } from '../../config';
@@ -16,8 +19,10 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   const navigate = useNavigate()
   const { user, profilePictureUrl, userDispatch } = useAuthContext()
   const { studentEvalsDispatch } = useStudentEvalsContext()
+  const { shopDispatch } = useShopContext()                                                   // Winaris (shop page)
   const { courseAnalyticsDispatch } = useCourseAnalyticsContext()
   const { dashboardDispatch } = useDashboardContext()
+  const { homeDispatch } = useHomeContext()                                                   // Winaris (home page)                  
   const { teamAssessmentsDispatch } = useTeamAssessmentsContext()
   const { researchInfoDispatch } = useResearchInfoContext()
 
@@ -33,8 +38,10 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
 
       // Clear state data
       studentEvalsDispatch({type: 'CLEAR_DATA'})
+      shopDispatch({type: 'CLEAR_DATA'})                                                        // Winaris (shop page)                            
       courseAnalyticsDispatch({type: 'CLEAR_DATA'})
       dashboardDispatch({type: 'CLEAR_DATA'})
+      homeDispatch({type: 'CLEAR_DATA'})                                                        // Winaris (home page)              
       teamAssessmentsDispatch({type: 'CLEAR_DATA'})
       researchInfoDispatch({type: 'CLEAR_DATA'})
 
@@ -80,6 +87,10 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
         <p className="user">{ user ? user.first_name +' '+ user.last_name : '' }</p>
         <div className="buttons">
           <div className='buttonGroup'>
+            <p>Winaris</p>
+            <button onClick={ (e) => navigate('/home') }>Home</button>
+            <button onClick={ (e) => navigate('/shop') }>Shop</button>
+            <button onClick={ (e) => navigate('/partsupload') }>Upload Parts</button>
             <p>View Data</p>
             <button onClick={ (e) => navigate('/dashboard') }>Dashboard</button>
             <button onClick={ (e) => navigate('/student-evals') }>Students Evals</button>

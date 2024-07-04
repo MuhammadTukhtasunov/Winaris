@@ -1,0 +1,87 @@
+
+/* display currentCourses in a 2 column grid */
+.courses {
+  display: grid;
+  grid-gap: 0px;
+  padding: 20px;
+}
+.shopError {
+  color: var(--error);
+  text-align: center;
+}
+.shopCard {
+  margin: 50px auto;
+  padding: 5px;
+  background-color: var(--cardbg);
+  color: var(--cardtext);
+  box-shadow: 1px 0px 4px black;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.shopCard h1 {
+  color: black;
+  text-align: left;
+  padding: 10px 40px;
+  font-size: 1.5em;
+}
+
+.shopCardContent {
+  padding: 20px 50px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.shopCardContent button {
+  width: 100%;
+  background-color: var(--cardtext);
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5%;
+  margin: 10px 0;
+}
+.shopOptions {
+  width: 60%;
+}
+.shopButtons {
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+  align-items: end;
+}
+
+.shopOptions .shopDropdownBox {
+  flex: 1 1 0px;
+  padding: 10px;
+}
+.shopOptions .shopDropdownBox h3 {
+  margin: 5px;
+}
+
+.shopOptions .shopDropdown {
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  padding: 7px;
+  border: thin solid var(--cardtext);
+  background: transparent;
+  font: 16px Arial, Helvetica, sans-serif;
+  height: 45px;
+  color: var(--cardtext);
+}
+
+/* Display One Column On Small Screen Sizes */ 
+@media (max-width: 1300px) {
+  .courses { grid-template-columns: 1fr; }
+}
+
+/* Display Two Columns On Large Screen Sizes */
+@media (min-width: 1300px) {
+  .courses { grid-template-columns: 1fr 1fr; }
+}

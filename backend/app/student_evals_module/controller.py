@@ -137,7 +137,6 @@ def overwrite_evals_rows_controller(request):
         print(e)
         return dict(error="Error overwriting rows. Please try again."), HTTPStatus.INTERNAL_SERVER_ERROR
 
-
 def get_student_evals_controller(user_email=None, limit=False):
     # Get Current User's Email
     email = current_user.email
@@ -173,7 +172,6 @@ def get_student_evals_controller(user_email=None, limit=False):
         'ave_course_rating_mean': course.ave_course_rating_mean,
         'ave_instructor_rating_mean': course.ave_instructor_rating_mean
     } for course in courses], HTTPStatus.OK
-
 
 def get_student_evals_details_controller(course_name, user_email=None):
     email = current_user.email
@@ -315,8 +313,6 @@ def get_student_evals_details_controller(course_name, user_email=None):
             'returns'           : detail.get('returns'              , 'N/A')
         } for detail in course.get('details', [])]
     } for course in courses], HTTPStatus.OK
-
-
 
 def parse_and_upload_excel(fbytes):
     try:
@@ -498,3 +494,4 @@ def parse_and_upload_excel(fbytes):
         evals.append(eval)
     
     return evals, details_rows, skipped_entries, existing_entries
+

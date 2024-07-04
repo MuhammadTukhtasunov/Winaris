@@ -1,0 +1,125 @@
+.homeBody {
+  display: grid;
+}
+
+.homeCard {
+  margin: 50px auto;
+  padding: 5px;
+  background-color: var(--cardbg);
+  color: var(--cardtext);
+  box-shadow: 1px 0px 4px black;
+  border-radius: 20px;
+  width: 90%;
+  overflow: hidden;
+}
+
+.homeCard h1 {
+  color: black;
+  text-align: left;
+  font-size: 2em;
+}
+.homeCard h2 {
+  color: black;
+  text-align: left;
+  font-size: 1em;
+  margin: 5px; 
+}
+
+.homeCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+}
+
+.homeCardContent {
+  padding: 0px 50px;
+  font-size: 1.5em;
+  /* text-align: center; */
+}
+.homeTable {
+  margin: 20px 0px;
+}
+.homeTable table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.homeTable th, .homeTable td {
+    border: 2px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.grantList li{
+  font-weight: bold;
+}
+
+.grantInfo {
+  font-weight: normal;
+}
+
+.grantList p{
+  margin: 15px;
+}
+
+.publicationList li{
+  font-weight: bold;
+}
+
+.publicationInfo {
+  font-weight: normal;
+}
+
+.publicationList p{
+  margin: 15px;
+}
+
+.homeBody button {
+  width: 30%;
+  height: 50%;
+  background-color: var(--cardtext);
+  border: none;
+  display: block;
+  cursor: pointer;
+  color: white;
+  padding: 8px 18px;
+  font-size: 16px;
+  font-weight: 900;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+.homeBody button:hover {
+  background-color: var(--hover);
+}
+.instructorCard {
+  grid-column: span 2;
+  width: 95%;
+}
+.homePlotCard {
+  grid-column: span 2;
+  width: 95%;
+}
+
+.homePlot {
+  border: black solid thin;
+}
+.homeExpenCard {
+  overflow-x: auto;
+}
+/* Display One Column On Small Screen Sizes */ 
+@media (max-width: 1300px) {
+  .homeBody { grid-template-columns: repeat(1, 1fr); }
+  .homePlotCard {
+    grid-column: span 1;
+    width: 90%;
+  }
+}
+
+/* Display Two Columns On Medium to Large Screen Sizes */ 
+@media (min-width: 1300px) {
+  .homeBody { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,4 +1,6 @@
-import USCLogo from '../../assets/navbar-usc-logo.svg';
+// import USCLogo from '../../assets/navbar-usc-logo.svg';
+import USCLogo from '../../assets/winaris_logo.svg';
+// import USCLogo from '../../assets/navbar-usc-logo.png';
 import DashboardScreenshot from '../../assets/splashPageScreenshots/dashboard.png';
 import CourseAnalyticsScreenshot from '../../assets/splashPageScreenshots/courseAnalytics.png';
 import ResearchInfoScreenshot from '../../assets/splashPageScreenshots/researchInfo.png';

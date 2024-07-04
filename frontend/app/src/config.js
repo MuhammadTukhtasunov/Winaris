@@ -4,6 +4,7 @@ const BASE_URL=`${process.env.REACT_APP_BASE_URL}/`
 module.exports = global.config = {
     HOME_URL: BASE_URL,
     DASHBOARD_URL: BASE_URL + "dashboard",
+    HOME_URL: BASE_URL + "home",
     LIMITED_GRANTS_URL: BASE_URL + "limited_grants",
     LIMITED_PUBS_URL: BASE_URL + "limited_publications",
     LIMITED_EVALS_URL: BASE_URL + "limited_student_evals",
@@ -16,6 +17,11 @@ module.exports = global.config = {
     GRANTS_URL: BASE_URL + "grants",
     PUBS_URL: BASE_URL + "publications",
     EXPEN_URL: BASE_URL + "expenditures",
+
+    SHOP_URL: BASE_URL + "shop",
+
+    WINARIS_SHOP_URL: BASE_URL + "winaris_shop",
+    WINARIS_UPLOAD_URL: BASE_URL + "winaris_upload",
 
     STUDENT_EVALS_URL: BASE_URL + "student_evals",
     STUDENT_EVALS_DETAILS_URL: BASE_URL + "student_evals_details",
