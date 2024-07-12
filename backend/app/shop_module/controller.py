@@ -61,6 +61,8 @@ def upload_parts_controller(request):
             return dict(error='No file part'), HTTPStatus.BAD_REQUEST
         
         file = request.files['file']
+        print(f"--------------------------------------------")
+        print(f"{file}")
 
         # Check if file is present and has an allowed extension (if needed)
         if file.filename == '':
@@ -101,16 +103,23 @@ def upload_parts_controller(request):
 def parse_and_upload_excel(fbytes):
     try:
         df = pd.read_excel(fbytes)
+        # set first row as header and delete first row
+        # df.columns = df.iloc[0]
+        # df = df[1:]
+        print(f"--------------------------------------------")
+        print(f"{df}")
     except Exception:
         raise Exception('Error reading excel file')
     
     df.columns = [c.lower() for c in df.columns]
+    print(f"--------------------------------------------")
+    print(f"{df}")
 
     parts = []
     skipped_entries = []
     existing_rows = []
     seen_sections = set()
-
+ 
     # loop through rows in excel sheet
     for i in range(len(df)):
         row = df.iloc[i].to_dict()
@@ -118,10 +127,16 @@ def parse_and_upload_excel(fbytes):
         # Get first few fields
         keyerror = False
         try:
-            part_number = str(row['part number'])
+            part_number = str(row['part_number'])
             vehicle = str(row['vehicle'])
-            price = int(row['price'])
-            quantity = int(row['quantity'])
+            price = 0.0 if not float(row['price']) >= 0.0 else float(row['price'])
+            quantity = 0.0 if not float(row['quantity']) >= 0.0 else float(row['quantity'])
+
+            if not price >= 0.0:
+                print(f"--------------------------------------------")
+                print(f"price: {price}")
+            
+
         except KeyError:
             keyerror = True
         
@@ -130,9 +145,8 @@ def parse_and_upload_excel(fbytes):
                      price=price,
                      quantity=quantity)
         
+        print(f"--------------------------------------------")
+        print(f"{part}")
+        
         parts.append(part)
     return parts, skipped_entries, existing_rows
-        
-
-
-

@@ -91,12 +91,13 @@ function PartsUpload() {
       const json = await response.json();
 
       if(!response.ok) {
+        console.log(json)
         setEvalProcessing(false)
         if (json.error) {
           setError(`Error uploading file - ${json.error}`)
         }
         throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+      } 
 
       if (response.ok) {
         setError(null)
@@ -114,7 +115,7 @@ function PartsUpload() {
           setSkippedRowsOther(json.skipped_rows.filter(row => row.reason !== 'This entry already exists in the database'))
         }
         else {
-          navigate('/student-evals', { state: { mssg: 'Evaluation Uploaded', status: 'ok' }})
+          navigate('/shop', { state: { mssg: 'Evaluation Uploaded', status: 'ok' }})
         }
       }
     } catch (error) {
@@ -215,7 +216,7 @@ function PartsUpload() {
         <h1 className="evaluploadPageHeader">Upload Parts File</h1>
         <section className="PartsUpload">
           <form onSubmit={handleSubmit} className="evalupload-form">
-            <h2 className="evalupload-form-heading">Upload CSV File</h2>
+            <h2 className="evalupload-form-heading">Upload .xlsx File</h2>
             <input type="file" onChange={handleChange} className="evalupload-form-input" />
             <button type="submit" className="evalupload-form-button">Upload</button>
           </form>

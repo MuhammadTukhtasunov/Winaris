@@ -65,6 +65,7 @@ const Shop = () => {
           ).map((part, i) => 
             <div className='shopCard' key={i}>
               <div className='shopCardContent'>
+                <p>Vehicle: { part.vehicle }</p>
                 <p>Part Number: { part.part_number }</p>
                 <p>Price: ${ part.price }</p>
                 <p>Quantity: { part.quantity }</p>
